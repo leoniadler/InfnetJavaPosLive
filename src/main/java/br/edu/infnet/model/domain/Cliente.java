@@ -1,6 +1,8 @@
 package br.edu.infnet.model.domain;
 
-public class Cliente {
+import br.edu.infnet.appCompra.interfaces.IPrinter;
+
+public class Cliente implements IPrinter {
 	
 	private String nome; 
 	private String cpf;
@@ -10,6 +12,14 @@ public class Cliente {
 		this.cpf = cpf;
 		this.email = email;
 		this.nome= nome;
+	}
+	
+	
+	@Override
+	public void impressao() {
+		System.out.println("#Cliente");
+		System.out.println(this);
+		
 	}
 	
 	@Override
@@ -40,6 +50,8 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 	
 	
 }

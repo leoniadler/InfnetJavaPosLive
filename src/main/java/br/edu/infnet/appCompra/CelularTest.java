@@ -6,6 +6,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.model.domain.Celular;
+import br.edu.infnet.model.test.AppImpressao;
 
 @Component
 @Order(4)
@@ -13,7 +14,9 @@ public class CelularTest implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		System.out.println();
 		System.out.println("#celular");
+		System.out.println();
 		
 		Celular celular1 = new Celular();
 		
@@ -25,7 +28,16 @@ public class CelularTest implements ApplicationRunner {
 		celular1.setModelo("Galaxy");
 		celular1.setValor(1000.0);
 		celular1.setCarregador(true);
-		System.out.println(celular1.toString());
+//		System.out.println(celular1.toString());
+		System.out.println();
+		
+		AppImpressao.relatorio("Inclusao do Aparelho Motorola", celular1);
+		
+//		AppProduto appCelular1 = new AppProduto("Inclusao do Aparelho Motorola");
+//		AppProduto.relatorio(celular1);
+		
+		System.out.println();
+		
 		
 		Celular celular2 = new Celular();
 		
@@ -37,7 +49,16 @@ public class CelularTest implements ApplicationRunner {
 		celular2.setModelo("11");
 		celular2.setValor(2000.0);
 		celular2.setCarregador(false);
-		System.out.println(celular2.toString());
+//		System.out.println(celular2.toString());
+		System.out.println();
+		
+		AppImpressao.relatorio("Inclusao do Aparelho Apple", celular2);
+		
+//		AppProduto appCelular2 = new AppProduto("Inclusao do Aparelho Apple");
+//		AppProduto.relatorio(celular2);
+		
+		System.out.println();
+		
 		
 		Celular celular3 = new Celular();
 		
@@ -49,7 +70,13 @@ public class CelularTest implements ApplicationRunner {
 		celular3.setModelo("NX 10");
 		celular3.setValor(3000.0);
 		celular3.setCarregador(true);
-		System.out.println(celular3.toString());		
+//		System.out.println(celular3.toString());	
+		
+		AppImpressao.relatorio("Inclusao do Aparelho LG", celular3);
+
+		
+//		AppProduto appCelular3 = new AppProduto("Inclusao do Aparelho LG");
+//		appCelular3.relatorio(celular3);
 	}
 
 }

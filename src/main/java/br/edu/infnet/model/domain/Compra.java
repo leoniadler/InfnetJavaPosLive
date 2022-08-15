@@ -2,10 +2,18 @@ package br.edu.infnet.model.domain;
 
 import java.time.LocalDateTime;
 
-public class Compra {
+import br.edu.infnet.appCompra.interfaces.IPrinter;
+
+public class Compra implements IPrinter {
 	private String descricao;  // get recuperar - set preencher
 	private LocalDateTime data;
 	private boolean web;
+	
+	@Override
+	public void impressao() {
+		System.out.println("#Pedido");
+		System.out.println(this);
+	}
 	
 	@Override
 	public String toString() {

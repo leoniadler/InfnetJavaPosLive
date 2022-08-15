@@ -6,9 +6,21 @@ public class Televisao extends Produto{
 	private Double valor;
 	private boolean definicao;
 	
+//	@Override
+	public Double calcularVenda() {
+		
+		Double valorValor =  valor * 2;
+		
+		Double valorDefinicao = (double) (definicao ? 5 : 2);
+		
+		return getValor() + valorValor + valorDefinicao;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Marca: " + marca + " - " + " Modelo: " + tamanho + " - " + "Valor: " + valor + " - " + definicao + super.toString();
+		return "Marca: " + marca + " - " + " Tamanho: " + tamanho + " - " + "Valor: " + valor + " - " + definicao + super.toString();
 	}
 
 	public String getMarca() {
@@ -42,6 +54,14 @@ public class Televisao extends Produto{
 	public void setDefinicao(boolean definicao) {
 		this.definicao = definicao;
 	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#Televisao");
+		System.out.println(this);
+	}
+
+	
 	
 	
 }

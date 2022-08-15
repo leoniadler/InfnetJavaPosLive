@@ -7,8 +7,25 @@ public class Celular extends Produto{
 	private boolean carregador;
 	
 	@Override
+	public Double calcularVenda() {
+			System.out.println("Calcular venda - Celular");
+			Double valorCarregador = (double) (carregador ? 10 : 5);// se o atributo carregador for verdadeiro sera 10 senao 5
+			
+			Double valorValor =  valor * 2;
+		
+		return getValor() * 2 + valorCarregador + valorValor;
+	}
+	
+	@Override
 	public String toString() {
 		return "Marca: " + marca + " - " + " Modelo: " + modelo + " - " + "Valor: " + valor + " - " + carregador + super.toString();
+	}
+	
+	@Override
+	public void impressao() {
+		System.out.println("#Celular");
+		System.out.println(this);
+		
 	}
 
 	public String getMarca() {
@@ -42,6 +59,8 @@ public class Celular extends Produto{
 	public void setCarregador(boolean carregador) {
 		this.carregador = carregador;
 	}
+
+	
 	
 	
 }

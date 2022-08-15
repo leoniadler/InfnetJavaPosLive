@@ -7,6 +7,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.model.domain.Televisao;
+import br.edu.infnet.model.test.AppImpressao;
 
 @Component
 @Order(6)
@@ -14,7 +15,9 @@ public class TelevisaoTest implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		System.out.println();
 		System.out.println("#televisao");
+		System.out.println();
 		
 		Televisao televisao1 = new Televisao();
 		
@@ -28,6 +31,12 @@ public class TelevisaoTest implements ApplicationRunner{
 		televisao1.setDefinicao(true);
 		System.out.println(televisao1.toString());
 		
+		System.out.println();
+		
+		AppImpressao.relatorio("Inclusao da TV Samsung", televisao1);
+		
+		System.out.println();
+		
 		Televisao televisao2 = new Televisao();
 		
 		televisao2.setCodigo(666);
@@ -40,6 +49,12 @@ public class TelevisaoTest implements ApplicationRunner{
 		televisao2.setDefinicao(false);
 		System.out.println(televisao2.toString());
 		
+		System.out.println();
+		
+		 AppImpressao.relatorio("Inclusao da TV Philco", televisao2);
+		
+		System.out.println();
+		
 		Televisao televisao3 = new Televisao();
 		
 		televisao3.setCodigo(777);
@@ -50,7 +65,13 @@ public class TelevisaoTest implements ApplicationRunner{
 		televisao3.setTamanho("65");
 		televisao3.setValor(3000.0);
 		televisao3.setDefinicao(true);
-		System.out.println(televisao3.toString());		
+		System.out.println(televisao3.toString());	
+		
+		System.out.println();
+		
+		 AppImpressao.relatorio("Inclusao da TV LG", televisao3);
+		
+		System.out.println();
 	}
 
 }

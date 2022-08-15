@@ -7,6 +7,11 @@ public class Notebook extends Produto{
 	private boolean placaDeVideo;
 	
 	@Override
+	public Double calcularVenda() {	
+		return getValor() * 2;
+	}
+	
+	@Override
 	public String toString() {
 		return "Marca: " + marca + " - " + " Modelo: " + informacoes + " - " + "Valor: " + valor + " - " + placaDeVideo + super.toString();
 	}
@@ -42,6 +47,15 @@ public class Notebook extends Produto{
 	public void setPlacaDeVideo(boolean placaDeVideo) {
 		this.placaDeVideo = placaDeVideo;
 	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#Notebbok");
+		System.out.println(this);
+		
+	}
+
+	
 	
 	
 }
