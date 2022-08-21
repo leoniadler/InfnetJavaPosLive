@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appCompra.controller.CelularController;
 import br.edu.infnet.model.domain.Celular;
-//import br.edu.infnet.model.test.AppImpressao;
 
 @Component
 @Order(4)
@@ -29,15 +28,9 @@ public class CelularTest implements ApplicationRunner {
 		celular1.setModelo("Galaxy");
 		celular1.setValor(1000.0);
 		celular1.setCarregador(true);
-//		System.out.println(celular1.toString());
 		System.out.println();
 		
 		CelularController.incluir(celular1);
-		
-//		AppImpressao.relatorio("Inclusao do Aparelho Motorola", celular1);
-		
-//		AppProduto appCelular1 = new AppProduto("Inclusao do Aparelho Motorola");
-//		AppProduto.relatorio(celular1);
 		
 		System.out.println();
 		
@@ -52,15 +45,10 @@ public class CelularTest implements ApplicationRunner {
 		celular2.setModelo("11");
 		celular2.setValor(2000.0);
 		celular2.setCarregador(false);
-//		System.out.println(celular2.toString());
 		System.out.println();
 		
 		CelularController.incluir(celular2);
-		
-//		AppImpressao.relatorio("Inclusao do Aparelho Apple", celular2);
-		
-//		AppProduto appCelular2 = new AppProduto("Inclusao do Aparelho Apple");
-//		AppProduto.relatorio(celular2);
+
 		
 		System.out.println();
 		
@@ -74,16 +62,9 @@ public class CelularTest implements ApplicationRunner {
 		celular3.setMarca("LG");
 		celular3.setModelo("NX 10");
 		celular3.setValor(3000.0);
-		celular3.setCarregador(true);
-//		System.out.println(celular3.toString());	
+		celular3.setCarregador(true);	
 		
 		CelularController.incluir(celular3);
-		
-//		AppImpressao.relatorio("Inclusao do Aparelho LG", celular3);
-
-		
-//		AppProduto appCelular3 = new AppProduto("Inclusao do Aparelho LG");
-//		appCelular3.relatorio(celular3);
 	}
 
 }

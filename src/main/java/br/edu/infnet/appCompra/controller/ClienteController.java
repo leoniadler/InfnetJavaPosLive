@@ -1,9 +1,8 @@
 package br.edu.infnet.appCompra.controller;
 
 import java.util.Collection;
-//import java.util.ArrayList;
+
 import java.util.HashMap;
-//import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -11,21 +10,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-//import br.edu.infnet.model.domain.Celular;
+
 import br.edu.infnet.model.domain.Cliente;
 import br.edu.infnet.model.test.AppImpressao;
 
 @Controller
 public class ClienteController {
-	
-//private static List<Cliente> clientes = new ArrayList<Cliente>();
 
 private static Map<Integer, Cliente> mapaCliente = new HashMap<Integer, Cliente>();
 
 private static Integer id = 1;
 	
 	public static void incluir(Cliente cliente) {
-//		clientes.add(cliente);
 		
 		cliente.setId(id++);
 		

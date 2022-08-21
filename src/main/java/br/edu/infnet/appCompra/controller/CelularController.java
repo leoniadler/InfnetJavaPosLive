@@ -1,10 +1,7 @@
 package br.edu.infnet.appCompra.controller;
 
 import java.util.Collection;
-//import java.util.ArrayList;
 import java.util.HashMap;
-//import java.util.List;
-//import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -18,14 +15,11 @@ import br.edu.infnet.model.test.AppImpressao;
 @Controller
 public class CelularController { 
 	
-//	private static List<Celular> celulares = new ArrayList<Celular>();
-	
 	private static Map<Integer, Celular> mapaCelular = new HashMap<Integer, Celular>();
 	
 	private static Integer id = 1;
 	
 	public static void incluir(Celular celular) {
-//		celulares.add(celular);
 		
 		celular.setId(id++);
 		

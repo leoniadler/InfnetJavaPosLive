@@ -2,7 +2,6 @@ package br.edu.infnet.appCompra;
 
 //import java.util.ArrayList;
 import java.util.HashSet;
-//import java.util.List;
 import java.util.Set;
 
 //import java.time.LocalDateTime;
@@ -12,9 +11,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-//import br.edu.infnet.appCompra.controller.CelularController;
-//import br.edu.infnet.appCompra.controller.ClienteController;
-//import br.edu.infnet.appCompra.controller.CompraController;
 import br.edu.infnet.model.domain.Celular;
 import br.edu.infnet.model.domain.Cliente;
 import br.edu.infnet.model.domain.Compra;
@@ -89,22 +85,13 @@ public class CompraTest implements ApplicationRunner{
 	
 		 
 		
-		
-//		Cliente cliente1 = new Cliente("12312312312", "ana@ana.com", "ana");
-//		Cliente cliente2 = new Cliente("23423423423", "joao@joao.com", "joao");
-//		Cliente cliente3 = new Cliente("22222222222", "maria@maria.com", "maria");
-		
 		Cliente cliente1 = new Cliente("12312312312", "ana@ana.com", "ana"); 
 		
 		Compra compra1 = new Compra(cliente1);
 		compra1.setDescricao("Compra 1");
-//		compra1.setData(LocalDateTime.now());
 		compra1.setWeb(false);
 		compra1.setProdutoLista(listaCompraCompra1);
 		AppImpressao.relatorio("Inclusão do Pedido 1!", compra1);
-		
-//		compra1.setCliente(new Cliente("12312312312", "ana@ana.com", "ana"));
-//		System.out.println(compra1.toString());
 		
 		Set<Produto> listaCompraCompra2 = new HashSet<Produto>();
 		
@@ -116,14 +103,10 @@ public class CompraTest implements ApplicationRunner{
 		Cliente cliente2 = new Cliente("23423423423", "joao@joao.com", "joao");
 		
 		Compra compra2 = new Compra(cliente2);
-		compra2.setDescricao("Compra 2");
-//		compra2.setData(LocalDateTime.now());		
+		compra2.setDescricao("Compra 2");		
 		compra2.setWeb(true);
 		compra2.setProdutoLista(listaCompraCompra2);
 		AppImpressao.relatorio("Inclusão do Pedido 1!", compra2);
-		
-//		compra2.setCliente(cliente2);
-//		System.out.println(compra2.toString());
 		
 		
 		Set<Produto> listaCompraCompra3 = new HashSet<Produto>();
@@ -137,13 +120,9 @@ public class CompraTest implements ApplicationRunner{
 		
 		Compra compra3 = new Compra(cliente3);
 		compra3.setDescricao("Compra 3");
-//		compra3.setData(LocalDateTime.now());
 		compra3.setWeb(false);
 		compra3.setProdutoLista(listaCompraCompra3);
 		AppImpressao.relatorio("Inclusão do Pedido 1!", compra3);
-		
-//		compra3.setCliente(cliente3);
-//		System.out.println(compra3.toString());	
 		
 		
 		
