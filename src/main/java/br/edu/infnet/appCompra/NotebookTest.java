@@ -5,8 +5,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+//import br.edu.infnet.appCompra.controller.ClienteController;
+import br.edu.infnet.appCompra.controller.NotebookController;
 import br.edu.infnet.model.domain.Notebook;
-import br.edu.infnet.model.test.AppImpressao;
+//import br.edu.infnet.model.test.AppImpressao;
 
 @Component
 @Order(5)
@@ -33,7 +35,9 @@ public class NotebookTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		AppImpressao.relatorio("Inclusao do Notebook Samsung",notebook1);
+		NotebookController.incluir(notebook1);
+		
+//		AppImpressao.relatorio("Inclusao do Notebook Samsung",notebook1);
 		
 		System.out.println();
 		
@@ -54,7 +58,9 @@ public class NotebookTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		AppImpressao.relatorio("Inclusao do Notebook Macbook", notebook2);
+		NotebookController.incluir(notebook2);
+		
+//		AppImpressao.relatorio("Inclusao do Notebook Macbook", notebook2);
 		
 		System.out.println();
 		
@@ -72,7 +78,9 @@ public class NotebookTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		AppImpressao.relatorio("Inclusao do Notebook Vaio", notebook3);
+		NotebookController.incluir(notebook3);
+		
+//		AppImpressao.relatorio("Inclusao do Notebook Vaio", notebook3);
 		
 		System.out.println();
 	}

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,36 +53,23 @@
 	        <th>Tamanho</th>
 	        <th>Preço</th>
 	        <th>Definição</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
+	      <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	        <td>Samsung</td>
-	        <td>R$1000.00</td>
-	        <td>555</td>
-	        <td>Samsung</td>
-	        <td>45'</td>
-	        <td>R$1000.00</td>
-	        <td>Alta Definição</td>
+	      	<td>${c.id}</td>
+	        <td>${c.nome}</td>
+	        <td>${c.valor}</td>
+	        <td>${c.codigo}</td>
+	        <td>${c.marca}</td>
+	        <td>${c.tamanho}</td>
+	        <td>${c.preco}</td>
+	        <td>${c.definicao}</td>
+	        <td><a href="/televisao/${c.id}/excluir">excluir</a></td>
 	      </tr>
-	      <tr>
-	        <td>Philco</td>
-	        <td>R$2000.00</td>
-	        <td>666</td>
-	        <td>Philco</td>
-	        <td>55'</td>
-	        <td>R$2000.00</td>
-	        <td>Full-HD</td>
-	      </tr>
-	      <tr>
-	        <td>LG</td>
-	        <td>R$3000.00</td>
-	        <td>777</td>
-	        <td>LG</td>
-	        <td>65'</td>
-	        <td>R$3000.00</td>
-	        <td>4k</td>
-	      </tr>
+	      </c:forEach>
 	      
 	    </tbody>
 	  </table>

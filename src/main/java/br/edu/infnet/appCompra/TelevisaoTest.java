@@ -6,8 +6,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+//import br.edu.infnet.appCompra.controller.NotebookController;
+import br.edu.infnet.appCompra.controller.TelevisaoController;
 import br.edu.infnet.model.domain.Televisao;
-import br.edu.infnet.model.test.AppImpressao;
+//import br.edu.infnet.model.test.AppImpressao;
 
 @Component
 @Order(6)
@@ -33,7 +35,9 @@ public class TelevisaoTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		AppImpressao.relatorio("Inclusao da TV Samsung", televisao1);
+		TelevisaoController.incluir(televisao1);
+		
+//		AppImpressao.relatorio("Inclusao da TV Samsung", televisao1);
 		
 		System.out.println();
 		
@@ -51,7 +55,9 @@ public class TelevisaoTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		 AppImpressao.relatorio("Inclusao da TV Philco", televisao2);
+		TelevisaoController.incluir(televisao2);
+		
+//		 AppImpressao.relatorio("Inclusao da TV Philco", televisao2);
 		
 		System.out.println();
 		
@@ -69,7 +75,9 @@ public class TelevisaoTest implements ApplicationRunner{
 		
 		System.out.println();
 		
-		 AppImpressao.relatorio("Inclusao da TV LG", televisao3);
+		TelevisaoController.incluir(televisao3);
+		
+//		 AppImpressao.relatorio("Inclusao da TV LG", televisao3);
 		
 		System.out.println();
 	}

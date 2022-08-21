@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,29 +46,25 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>CPF</th>
 	      	<th>E-mail</th>
 	      	<th>Nome</th>
+	      	<th></th>
 	        
 	      </tr>
 	    </thead>
 	    <tbody>
+	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
+	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	        <td>123.123.123-2</td>
-	        <td>Maria@gmail.com</td>
-	        <td>Maria</td>
+	      	<td>${c.id}</td>	
+	        <td>${c.cpf}</td>
+	        <td>${c.email}</td>
+	        <td>${c.nome}</td>
+	       <td><a href="/cliente/${c.id}/excluir">excluir</a></td>
 	      </tr>
-	      <tr>
-	        <td>234.234.234-2</td>
-	        <td>João@joao.com</td>
-	        <td>João</td>
-	      </tr>
-	      <tr>
-	        <td>345.345.345-3</td>
-	        <td>Ana@ana.com</td>
-	        <td>Ana</td>
-
-	      </tr>
+	      </c:forEach>
 	      
 	    </tbody>
 	  </table>

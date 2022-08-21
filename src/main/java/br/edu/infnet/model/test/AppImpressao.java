@@ -1,7 +1,7 @@
 package br.edu.infnet.model.test;
 
 import br.edu.infnet.appCompra.interfaces.IPrinter;
-import br.edu.infnet.model.domain.Produto;
+//import br.edu.infnet.model.domain.Produto;
 
 public class AppImpressao {
 	

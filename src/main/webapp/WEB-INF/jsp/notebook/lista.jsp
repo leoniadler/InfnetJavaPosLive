@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,6 +46,7 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      <th>ID</th>
 	      	<th>Nome</th>
 	      	<th>Valor</th>
 	      	<th>Código</th>
@@ -52,36 +54,24 @@
 	        <th>Informações</th>
 	        <th>Preço</th>
 	        <th>Placa de Vídeo</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
+	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
+	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	        <td>Samsung</td>
-	        <td>R$2000.00</td>
-	        <td>222</td>
-	        <td>Samsung</td>
-	        <td>Técnologia 4k</td>
-	        <td>R$2000.00</td>
-	        <td>Intel</td>
+	      <td>${c.id}</td>
+	        <td>${c.nome}</td>
+	        <td>${c.valor}</td>
+	        <td>${c.codigo}</td>
+	        <td>${c.marca}</td>
+	        <td>${c.informacoes}</td>
+	        <td>${c.preco}</td>
+	        <td>${c.placaDeVideo}</td>
+	        <td><a href="/notebook/${c.id}/excluir">excluir</a></td>
 	      </tr>
-	      <tr>
-	        <td>Apple</td>
-	        <td>R$10000.00</td>
-	        <td>333</td>
-	        <td>Apple</td>
-	        <td>Macbook</td>
-	        <td>R$10000.00</td>
-	        <td>Ryzer</td>
-	      </tr>
-	      <tr>
-	        <td>Vaio</td>
-	        <td>R$3000.00</td>
-	        <td>444</td>
-	        <td>Vaio</td>
-	        <td>4k Técnology</td>
-	        <td>R$3000.00</td>
-	        <td>NVIDIA</td>
-	      </tr>
+	      </c:forEach>
 	    </tbody>
 	  </table>
 	  

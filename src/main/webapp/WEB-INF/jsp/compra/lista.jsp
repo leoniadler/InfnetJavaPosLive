@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,39 +46,30 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>Nome</th>
 	      	<th>Valor</th>
 	      	<th>Código</th>
 	        <th>Marca</th>
 	        <th>Modelo</th>
 	        <th>Preço</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
+	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
+	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	        <td>Compra 1</td>
-	        <td></td>
-	        <td></td>
-	        <td>Descrição</td>
-	        <td>Data</td>
-	        <td>Web</td>
+	      <td>${c.id}</td>
+	        <td>${c.nome}</td>
+	        <td>${c.valor}</td>
+	        <td>${c.codigo}</td>
+	        <td>${c.marca}</td>
+	        <td>${c.modelo}</td>
+	        <td>${c.preco}</td>
+	       <td><a href="/compra/${c.id}/excluir">excluir</a></td>
 	      </tr>
-	      <tr>
-	        <td>Compra 2</td>
-	        <td></td>
-	        <td></td>
-	        <td>Descrição</td>
-	        <td>Data</td>
-	        <td>Web</td>
-	      </tr>
-	      <tr>
-	        <td>Compra 3</td>
-	        <td></td>
-	        <td></td>
-	        <td>Descrição</td>
-	        <td>Data</td>
-	        <td>Web</td>
-	      </tr>
+	      </c:forEach>
 	     
 	    </tbody>
 	  </table>
