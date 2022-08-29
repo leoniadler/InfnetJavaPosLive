@@ -1,5 +1,8 @@
 package br.edu.infnet.model.domain;
 
+
+import br.edu.infnet.model.domain.exceptions.ValorCelularInvalidoException;
+
 public class Celular extends Produto{
 	private String marca; 
 	private String modelo;
@@ -7,7 +10,12 @@ public class Celular extends Produto{
 	private boolean carregador;
 	
 	@Override
-	public Double calcularVenda() {
+	public Double calcularVenda() throws ValorCelularInvalidoException {
+		
+		if(valor < 500) {
+			throw new ValorCelularInvalidoException(" Impossivel preencher o tamanho: (" + valor + ") com valor menor que 500");
+		}
+		
 			System.out.println("Calcular venda - Celular");
 			Double valorCarregador = (double) (carregador ? 10 : 5);// se o atributo carregador for verdadeiro sera 10 senao 5
 			

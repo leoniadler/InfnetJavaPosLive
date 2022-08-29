@@ -1,13 +1,19 @@
 package br.edu.infnet.model.domain;
 
+import br.edu.infnet.model.domain.exceptions.TamanhoTelevisaoInvalidoException;
+
 public class Televisao extends Produto{
 	private String marca; 
-	private String tamanho;
+	private Double tamanho;
 	private Double valor;
 	private boolean definicao;
 	
 //	@Override
-	public Double calcularVenda() {
+	public Double calcularVenda() throws TamanhoTelevisaoInvalidoException{
+		
+		if(tamanho < 20) {
+			throw new TamanhoTelevisaoInvalidoException(" Impossivel preencher o tamanho: (" + tamanho + ") com valor menor que 20");
+		}
 		
 		Double valorValor =  valor * 2;
 		
@@ -31,13 +37,18 @@ public class Televisao extends Produto{
 		this.marca = marca;
 	}
 
-	public String getTamanho() {
+	
+	public Double getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(String tamanho) {
+
+
+	public void setTamanho(Double tamanho) {
 		this.tamanho = tamanho;
 	}
+
+
 
 	public Double getValor() {
 		return valor;

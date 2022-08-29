@@ -1,16 +1,25 @@
 package br.edu.infnet.model.domain;
 
+
+import br.edu.infnet.model.domain.exceptions.ValorNotebookInvalidoException;
+
 public class Notebook extends Produto{
 	private String marca; 
 	private String informacoes;
 	private Double valor;
 	private boolean placaDeVideo;
+
 	
 	@Override
-	public Double calcularVenda() {	
+	public Double calcularVenda() throws ValorNotebookInvalidoException {	
+		
+		if(valor < 800) {
+			throw new ValorNotebookInvalidoException(" Impossivel preencher o tamanho: (" + valor + ") com valor menor que 20");
+		}
+		
 		return getValor() * 2;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Marca: " + marca + " - " + " Modelo: " + informacoes + " - " + "Valor: " + valor + " - " + placaDeVideo + super.toString();

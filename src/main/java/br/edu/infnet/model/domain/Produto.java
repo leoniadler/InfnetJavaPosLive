@@ -3,6 +3,10 @@ package br.edu.infnet.model.domain;
 //import java.util.Objects;
 
 import br.edu.infnet.appCompra.interfaces.IPrinter;
+import br.edu.infnet.model.domain.exceptions.TamanhoTelevisaoInvalidoException;
+import br.edu.infnet.model.domain.exceptions.ValorCelularInvalidoException;
+import br.edu.infnet.model.domain.exceptions.ValorNotebookInvalidoException;
+
 
 public abstract class Produto implements IPrinter{
 	private Integer id;
@@ -18,7 +22,11 @@ public abstract class Produto implements IPrinter{
 //		return preco * 2;
 //	}
 	
-	public abstract Double calcularVenda();
+	public abstract Double calcularVenda() throws TamanhoTelevisaoInvalidoException, ValorCelularInvalidoException, ValorNotebookInvalidoException;
+
+	
+	
+	
 	
 	@Override
 	public void impressao() {
@@ -29,7 +37,7 @@ public abstract class Produto implements IPrinter{
 	
 	@Override
 	public String toString() {
-		return " Nome: " + nome + " - " + " Preço: " + preco + " - " + " Código: " + codigo + " - " + " Calcular Venda: " + calcularVenda();
+		return " Nome: " + nome + " - " + " Preço: " + preco + " - " + " Código: " + codigo ;
 	}
 
 	public String getNome() {

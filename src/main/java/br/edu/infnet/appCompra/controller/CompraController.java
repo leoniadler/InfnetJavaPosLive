@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 import br.edu.infnet.model.domain.Compra;
+import br.edu.infnet.model.test.AppImpressao;
 
 @Controller
 public class CompraController {
@@ -24,6 +25,8 @@ private static Integer id = 1;
 		compra.setId(id++);
 		
 		mapaCompra.put(compra.getId(), compra);
+		
+		AppImpressao.relatorio("Inclusao do Aparelho " + compra.getDescricao() + "realizada com sucesso!", compra);
 		
 	}
 	

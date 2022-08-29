@@ -47,12 +47,11 @@
 	    <thead>
 	      <tr>
 	      	<th>ID</th>
-	      	<th>Nome</th>
-	      	<th>Valor</th>
-	      	<th>Código</th>
-	        <th>Marca</th>
-	        <th>Modelo</th>
-	        <th>Preço</th>
+	      	<th>Descrição</th>
+	      	<th>Data</th>
+	      	<th>Web</th>
+	        <th>Cliente</th>
+	        <th>Lista de Produtos</th>
 	        <th></th>
 	      </tr>
 	    </thead>
@@ -60,24 +59,18 @@
 	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
 	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	      <td>${c.id}</td>
-	        <td>${c.nome}</td>
-	        <td>${c.valor}</td>
-	        <td>${c.codigo}</td>
-	        <td>${c.marca}</td>
-	        <td>${c.modelo}</td>
-	        <td>${c.preco}</td>
+	      	<td>${c.id}</td>
+	        <td>${c.descricao}</td>
+	        <td>${c.data}</td>
+	        <td>${c.web}</td>
+	        <td>${c.cliente.nome}</td>
+	        <td>${c.produtoLista.size()}</td>
 	       <td><a href="/compra/${c.id}/excluir">excluir</a></td>
 	      </tr>
 	      </c:forEach>
 	     
 	    </tbody>
 	  </table>
-	  
-	  
-	  
-	 
-	    
 	</div>
 </body>
 </html>

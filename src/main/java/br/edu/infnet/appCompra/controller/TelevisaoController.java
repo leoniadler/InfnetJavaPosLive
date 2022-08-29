@@ -25,7 +25,7 @@ private static Integer id = 1;
 		
 		mapaTelevisao.put(televisao.getId(), televisao);
 		
-		AppImpressao.relatorio("Inclusao da TV "+ televisao.getNome() + "realizada com sucesso!", televisao);
+		AppImpressao.relatorio("Inclusao da "+ televisao.getNome() + " realizada com sucesso!", televisao);
 	}
 	
 	public static Collection<Televisao> obterLista(){
