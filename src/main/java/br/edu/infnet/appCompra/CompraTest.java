@@ -85,8 +85,8 @@ public class CompraTest implements ApplicationRunner{
 		//----------------------------------------
 		
 		
-		String dir = "MacintoshHD:/Usuários/ProjTxtInfnet/";
-		String arq = "compras.rft";
+		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
+		String arq = "compras.txt";
 		
 		try{
 			try {
@@ -101,6 +101,7 @@ public class CompraTest implements ApplicationRunner{
 					try {
 						
 						String[] campos = linha.split(";");
+						
 						
 						Set<Produto> listaCompraCompra1 = new HashSet<Produto>();
 						
@@ -118,8 +119,6 @@ public class CompraTest implements ApplicationRunner{
 					} catch (CpfInvalidoException | ClienteNuloException | CompraSemProdutoException e) {
 						System.out.println("[ERROR] - COMPRA: " + e.getMessage());
 					} 
-					
-					
 					linha = leitura.readLine();
 				}
 				
