@@ -25,8 +25,8 @@ public class AppImpressao {
 	}
 	
 	public static void main(String[] args) {
-		String dir = "leoniadler:/ProjTxtInfnet/";
-		String arq = "compras.rtf";
+		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
+		String arq = "compras.txt";
 		
 		try{
 			try {
@@ -34,13 +34,11 @@ public class AppImpressao {
 				
 				BufferedReader leitura = new BufferedReader(fileReader);
 				
+//				Runtime.getRuntime().exec("notepad /Users/leoniadler/ProjTxtInfnet/pedido.rtf");
 				
-				String linha = leitura.readLine();
-				while(linha != null) {
-					System.out.println(linha);
-					
-					linha = leitura.readLine();
-				}
+				System.out.println(leitura.readLine());
+				System.out.println(leitura.readLine());
+				System.out.println(leitura.readLine());
 				
 				leitura.close();
 				

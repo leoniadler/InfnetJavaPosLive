@@ -8,8 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-
+import br.edu.infnet.model.domain.Celular;
 import br.edu.infnet.model.domain.Compra;
 import br.edu.infnet.model.test.AppImpressao;
 
@@ -54,5 +55,16 @@ private static Integer id = 1;
 		excluir(id);
 		
 		return "redirect:/compra/lista";
+	}
+	
+	@PostMapping(value = "/compra/incluir")
+	public String inclusao(Compra compra) {
+		
+		incluir(compra);
+		
+		//inclusao do usuario
+//		System.out.println("[" + usuario.getNome()+ "]");
+		
+		return "redirect:/";
 	}
 }

@@ -79,6 +79,8 @@ public class Compra implements IPrinter {
 	public String toString() {
 		return descricao + " - " + "Data: " + data + " - " + web + " - " + "Cliente: " + cliente + " - " + " Produto: " + produtoLista.size();
 	}
+	
+
 
 	public String getDescricao() {
 		return descricao;
