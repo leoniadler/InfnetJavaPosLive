@@ -6,10 +6,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 //import br.edu.infnet.appCompra.controller.ClienteController;
-import br.edu.infnet.appCompra.controller.NotebookController;
 import br.edu.infnet.model.domain.Notebook;
 //import br.edu.infnet.model.test.AppImpressao;
 import br.edu.infnet.model.domain.exceptions.ValorNotebookInvalidoException;
+import br.edu.infnet.model.service.NotebookService;
 
 @Component
 @Order(5)
@@ -35,7 +35,7 @@ public class NotebookTest implements ApplicationRunner{
 			notebook1.setValor(2000.0);
 			notebook1.setPlacaDeVideo(true);
 			System.out.println("Calculo de Venda: " + notebook1.calcularVenda());
-			NotebookController.incluir(notebook1);
+			new NotebookService().incluir(notebook1);
 		} catch (ValorNotebookInvalidoException e) {
 			System.out.println("[ERROR - NOTEBOOK]" + e.getMessage());
 		}
@@ -65,7 +65,7 @@ public class NotebookTest implements ApplicationRunner{
 			notebook2.setValor(1000.0);
 			notebook2.setPlacaDeVideo(false);
 			System.out.println("Calculo de Venda: " + notebook2.calcularVenda());
-			NotebookController.incluir(notebook2);
+			new NotebookService().incluir(notebook2);
 		} catch (ValorNotebookInvalidoException e) {
 			System.out.println("[ERROR - NOTEBOOK]" + e.getMessage());
 		}
@@ -92,7 +92,7 @@ public class NotebookTest implements ApplicationRunner{
 			notebook3.setValor(3000.0);
 			notebook3.setPlacaDeVideo(true);
 			System.out.println("Calculo de Venda: " + notebook3.calcularVenda());
-			NotebookController.incluir(notebook3);
+			new NotebookService().incluir(notebook3);
 		} catch (ValorNotebookInvalidoException e) {
 			System.out.println("[ERROR - NOTEBOOK]" + e.getMessage());
 		}
@@ -115,7 +115,7 @@ public class NotebookTest implements ApplicationRunner{
 			notebook4.setValor(300.0);
 			notebook4.setPlacaDeVideo(true);
 			System.out.println("Calculo de Venda: " + notebook4.calcularVenda());
-			NotebookController.incluir(notebook4);
+			new NotebookService().incluir(notebook4);
 		} catch (ValorNotebookInvalidoException e) {
 			System.out.println("[ERROR - NOTEBOOK]" + e.getMessage());
 		}
@@ -135,7 +135,7 @@ System.out.println();
 			notebook5.setValor(300.0);
 			notebook5.setPlacaDeVideo(true);
 			System.out.println("Calculo de Venda: " + notebook5.calcularVenda());
-			NotebookController.incluir(notebook5);
+			new NotebookService().incluir(notebook5);
 		} catch (ValorNotebookInvalidoException e) {
 			System.out.println("[ERROR - NOTEBOOK]" + e.getMessage());
 		}

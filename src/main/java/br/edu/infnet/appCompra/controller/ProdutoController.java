@@ -1,8 +1,5 @@
 package br.edu.infnet.appCompra.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,36 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.edu.infnet.model.domain.Celular;
 import br.edu.infnet.model.domain.Produto;
+import br.edu.infnet.model.service.ProdutoService;
 
 @Controller
 public class ProdutoController {
 
-private static Map<Integer, Produto> mapaProduto = new HashMap<Integer, Produto>();
-
-private static Integer id = 1;
-	
-	public static void incluir(Produto produto) {
-		
-		produto.setId(id++);
-		
-		mapaProduto.put(produto.getId(), produto);
-	}
-	
-	public static Collection<Produto> obterLista(){
-		return mapaProduto.values();
-	}
-	
-	public static void excluir(Integer id){
-		mapaProduto.remove(id);
-	}
+	private ProdutoService produtoService = new ProdutoService();
 	
 	//rota
 	@GetMapping(value = "/produto/lista")
 	public String telaLista(Model model) {
 		
-		model.addAttribute("listagem", obterLista());
+		model.addAttribute("listagem", produtoService.obterLista());
 		
 		//tela
 		return "produto/lista";
@@ -48,7 +28,7 @@ private static Integer id = 1;
 	@GetMapping(value = "/produto/{id}/excluir")
 	public String exclusao(@PathVariable Integer id) {
 		
-		excluir(id);
+		produtoService.excluir(id);
 		
 		return "redirect:/produto/lista";
 	}
@@ -56,7 +36,7 @@ private static Integer id = 1;
 	@PostMapping(value = "/produto/incluir")
 	public String inclusao(Produto produto) {
 		
-		incluir(produto);
+		produtoService.incluir(produto);
 		
 		//inclusao do usuario
 //		System.out.println("[" + usuario.getNome()+ "]");

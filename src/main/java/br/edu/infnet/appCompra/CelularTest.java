@@ -5,9 +5,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appCompra.controller.CelularController;
 import br.edu.infnet.model.domain.Celular;
 import br.edu.infnet.model.domain.exceptions.ValorCelularInvalidoException;
+import br.edu.infnet.model.service.CelularService;
 
 @Component
 @Order(4)
@@ -34,7 +34,7 @@ public class CelularTest implements ApplicationRunner {
 			celular1.setCarregador(true);
 			System.out.println();
 			System.out.println("Calculo de Venda: " + celular1.calcularVenda());
-			CelularController.incluir(celular1);
+			new CelularService().incluir(celular1);
 		} catch (ValorCelularInvalidoException e) {
 			System.out.println("[ERROR - CELULAR]" + e.getMessage());
 		}
@@ -57,7 +57,7 @@ public class CelularTest implements ApplicationRunner {
 			celular2.setCarregador(false);
 			System.out.println();
 			System.out.println("Calculo de Venda: " + celular2.calcularVenda());
-			CelularController.incluir(celular2);
+			new CelularService().incluir(celular2);
 		} catch (ValorCelularInvalidoException e) {
 			System.out.println("[ERROR - CELULAR]" + e.getMessage());
 		}
@@ -80,7 +80,7 @@ public class CelularTest implements ApplicationRunner {
 			celular3.setValor(3000.0);
 			celular3.setCarregador(true);
 			System.out.println("Calculo de Venda: " + celular3.calcularVenda());
-			CelularController.incluir(celular3);
+			new CelularService().incluir(celular3);
 		} catch (ValorCelularInvalidoException e) {
 			System.out.println("[ERROR - CELULAR]" + e.getMessage());
 		}
@@ -101,7 +101,7 @@ public class CelularTest implements ApplicationRunner {
 			celular4.setValor(400.0);
 			celular4.setCarregador(true);
 			System.out.println("Calculo de Venda: " + celular4.calcularVenda());
-			CelularController.incluir(celular4);
+			new CelularService().incluir(celular4);
 		} catch (ValorCelularInvalidoException e) {
 			System.out.println("[ERROR - CELULAR]" + e.getMessage());
 		}

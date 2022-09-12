@@ -9,6 +9,7 @@ public class Usuario implements IPrinter {
 	private String senha;
 	
 	
+	
 	@Override
 	public void impressao() {
 		System.out.println("#Usuario");

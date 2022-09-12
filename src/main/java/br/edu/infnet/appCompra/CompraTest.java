@@ -15,7 +15,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appCompra.controller.CompraController;
 import br.edu.infnet.model.domain.Celular;
 import br.edu.infnet.model.domain.Cliente;
 import br.edu.infnet.model.domain.Compra;
@@ -25,7 +24,7 @@ import br.edu.infnet.model.domain.Televisao;
 import br.edu.infnet.model.domain.exceptions.ClienteNuloException;
 import br.edu.infnet.model.domain.exceptions.CompraSemProdutoException;
 import br.edu.infnet.model.domain.exceptions.CpfInvalidoException;
-import br.edu.infnet.model.test.AppImpressao;
+import br.edu.infnet.model.service.CompraService;
 
 @Component
 @Order(1)
@@ -115,7 +114,7 @@ public class CompraTest implements ApplicationRunner{
 						Compra compra1 = new Compra(cliente1, listaCompraCompra1);
 						compra1.setDescricao(campos[0]);
 						compra1.setWeb(Boolean.valueOf(campos[1]));
-						CompraController.incluir(compra1);
+						new CompraService().incluir(compra1);
 					} catch (CpfInvalidoException | ClienteNuloException | CompraSemProdutoException e) {
 						System.out.println("[ERROR] - COMPRA: " + e.getMessage());
 					} 

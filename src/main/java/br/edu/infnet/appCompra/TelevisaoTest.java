@@ -7,10 +7,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 //import br.edu.infnet.appCompra.controller.NotebookController;
-import br.edu.infnet.appCompra.controller.TelevisaoController;
 import br.edu.infnet.model.domain.Televisao;
 //import br.edu.infnet.model.test.AppImpressao;
 import br.edu.infnet.model.domain.exceptions.TamanhoTelevisaoInvalidoException;
+import br.edu.infnet.model.service.TelevisaoService;
 
 @Component
 @Order(6)
@@ -36,7 +36,7 @@ public class TelevisaoTest implements ApplicationRunner{
 			televisao1.setValor(1000.0);
 			televisao1.setDefinicao(true);
 			System.out.println("Calculo de Venda: " + televisao1.calcularVenda());
-			TelevisaoController.incluir(televisao1);
+			new TelevisaoService().incluir(televisao1);
 		} catch (TamanhoTelevisaoInvalidoException e) {
 			System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
 		}
@@ -62,7 +62,7 @@ public class TelevisaoTest implements ApplicationRunner{
 			televisao2.setValor(2000.0);
 			televisao2.setDefinicao(false);
 			System.out.println("Calculo de Venda: " + televisao2.calcularVenda());
-			TelevisaoController.incluir(televisao2);
+			new TelevisaoService().incluir(televisao2);
 		} catch (TamanhoTelevisaoInvalidoException e) {
 			System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
 		}
@@ -89,7 +89,7 @@ public class TelevisaoTest implements ApplicationRunner{
 			televisao3.setValor(3000.0);
 			televisao3.setDefinicao(true);
 			System.out.println("Calculo de Venda: " + televisao3.calcularVenda());
-			TelevisaoController.incluir(televisao3);
+			new TelevisaoService().incluir(televisao3);
 		} catch (TamanhoTelevisaoInvalidoException e) {
 			System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
 		}
@@ -108,7 +108,7 @@ public class TelevisaoTest implements ApplicationRunner{
 			televisao4.setValor(400.0);
 			televisao4.setDefinicao(true);
 			System.out.println("Calculo de Venda: " + televisao4.calcularVenda());
-			TelevisaoController.incluir(televisao4);
+			new TelevisaoService().incluir(televisao4);
 		} catch (TamanhoTelevisaoInvalidoException e) {
 			System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
 		}
