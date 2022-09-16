@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.edu.infnet.model.domain.Televisao;
-import br.edu.infnet.model.service.TelevisaoService;
+import br.edu.infnet.appCompra.model.domain.Televisao;
+import br.edu.infnet.appCompra.model.service.TelevisaoService;
 
 @Controller
 public class TelevisaoController {
@@ -26,20 +26,28 @@ public class TelevisaoController {
 			}
 			
 			@GetMapping(value = "/televisao/{id}/excluir")
-			public String exclusao(@PathVariable Integer id) {
+			public String excluir(@PathVariable Integer id) {
 				
 				televisaoService.excluir(id);
 				
 				return "redirect:/televisao/lista";
 			}
 			@PostMapping(value = "/televisao/incluir")
-			public String inclusao(Televisao televisao) {
+			public String incluir(Televisao televisao) {
 				
 				televisaoService.incluir(televisao);
 				
 				//inclusao do usuario
 //				System.out.println("[" + usuario.getNome()+ "]");
 				
-				return "redirect:/";
+				return "redirect:/televisao/lista";
+			}
+			
+			@GetMapping(value = "/televisao")
+			public String telaCadastro() {
+				
+				televisaoService.obterLista();
+				
+				return "televisao/cadastro";
 			}
 }

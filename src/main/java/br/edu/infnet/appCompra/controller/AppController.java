@@ -3,10 +3,7 @@ package br.edu.infnet.appCompra.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,24 +11,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import br.edu.infnet.model.domain.Usuario;
-import br.edu.infnet.model.domain.app.Projeto;
-import br.edu.infnet.model.service.AppService;
-import br.edu.infnet.model.service.UsuarioService;
-import br.edu.infnet.model.test.AppImpressao;
+import br.edu.infnet.appCompra.model.domain.Usuario;
+import br.edu.infnet.appCompra.model.domain.app.Projeto;
+import br.edu.infnet.appCompra.model.service.AppService;
+import br.edu.infnet.appCompra.model.service.UsuarioService;
+import br.edu.infnet.appCompra.model.test.AppImpressao;
 
 @SessionAttributes("user")
 @Controller
-@Component
 public class AppController {
 	
 	
 //	@Autowired
 //	private UsuarioService usuarioService;
 	
-	@Autowired
+	@Autowired(required = false)
 	private AppService appService;
 	
+private Projeto projeto;
+	
+	public void incluir(Projeto projeto) {
+		this.projeto = projeto;
+		
+		AppImpressao.relatorio("Exibiçao do Projeto" + projeto.getNome() + " realizada com sucesso!", projeto);
+	}
+	
+	public Projeto obterProjeto() {
+		return projeto;
+	}
 	
 	@GetMapping(value = "/")
 	public String telaHome(Model model) {

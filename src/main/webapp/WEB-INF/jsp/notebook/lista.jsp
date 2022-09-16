@@ -16,6 +16,8 @@
 	  <h2>AppCompra</h2>
 	  <p>Gestão de Cadastro de Compras</p>
 	  
+	   <h4><a href="/notebook">Novo Cadastro</a></h4> 
+	  
 	  <h3>Classe: Notebook</h3>            
 	  <table class="table table-striped">
 	    <thead>

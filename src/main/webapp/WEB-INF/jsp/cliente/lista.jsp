@@ -16,37 +16,32 @@
 	  <h2>AppCompra</h2>
 	  <p>Gestão de Cadastro de Compras</p>
 	  
+	 <h4><a href="/cliente">Novo Cadastro</a></h4> 
+	  
 	  <h3>Classe: Cliente</h3>            
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
 	      	<th>ID</th>
+	      	<th>Nome</th>
 	      	<th>CPF</th>
 	      	<th>E-mail</th>
-	      	<th>Nome</th>
 	      	<th></th>
-	        
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
 	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	      	<td>${c.id}</td>	
+	        <td>${c.id}</td>
+	      	<td>${c.nome}</td>
 	        <td>${c.cpf}</td>
 	        <td>${c.email}</td>
-	        <td>${c.nome}</td>
 	       <td><a href="/cliente/${c.id}/excluir">excluir</a></td>
 	      </tr>
 	      </c:forEach>
-	      
 	    </tbody>
 	  </table>
-	  
-	  
-	  
-	 
-	    
 	</div>
 </body>
 </html>

@@ -38,7 +38,7 @@
     
     <c:if test="${empty user}" > 
       <li class="nav-item">
-        <a class="nav-link" href="/usuario">Signup</a>
+        <a class="nav-link" href="/usuario"><span class="glyphicon glyphicon-user"></span>Signup</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>

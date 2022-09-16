@@ -16,10 +16,13 @@
 	  <h2>AppCompra</h2>
 	  <p>Gestão de Cadastro de Compras</p>
 	  
+	  <h4><a href="/televisao">Novo Cadastro</a></h4> 
+	  
 	  <h3>Classe: Televisão</h3>            
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>Nome</th>
 	      	<th>Valor</th>
 	      	<th>Código</th>

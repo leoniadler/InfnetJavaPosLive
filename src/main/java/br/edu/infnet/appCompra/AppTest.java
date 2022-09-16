@@ -13,16 +13,16 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import br.edu.infnet.model.domain.app.Atributo;
-import br.edu.infnet.model.domain.app.Classe;
-import br.edu.infnet.model.domain.app.Projeto;
-import br.edu.infnet.model.service.AppService;
+import br.edu.infnet.appCompra.model.domain.app.Atributo;
+import br.edu.infnet.appCompra.model.domain.app.Classe;
+import br.edu.infnet.appCompra.model.domain.app.Projeto;
+import br.edu.infnet.appCompra.model.service.AppService;
 
-@Service
 @Component
+@Service
 public class AppTest implements ApplicationRunner{
 	
-	@Autowired
+	@Autowired(required = false)
 	private AppService appService;
 	
 
