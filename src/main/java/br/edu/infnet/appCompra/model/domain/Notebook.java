@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorNotebookInvalidoException;
 
-//@Entity
-//@Table(name = "TNotebook")
+@Entity
+@Table(name = "TNotebook")
 public class Notebook extends Produto{
 	
 //	@Id

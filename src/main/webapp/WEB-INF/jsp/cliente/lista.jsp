@@ -14,6 +14,12 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 		<div class="container">
 	  <h2>AppCompra</h2>
+	  
+		<c:if test="${not empty mensagem }">	  
+			<div class="alert ${tipo}">
+	  			<strong>Informação</strong> ${mensagem} 
+			</div>
+	  	</c:if>
 	  <p>Gestão de Cadastro de Compras</p>
 	  
 	 <h4><a href="/cliente">Novo Cadastro</a></h4> 
@@ -26,6 +32,7 @@
 	      	<th>Nome</th>
 	      	<th>CPF</th>
 	      	<th>E-mail</th>
+	      	<th>Usuario</th>
 	      	<th></th>
 	      </tr>
 	    </thead>
@@ -37,6 +44,7 @@
 	      	<td>${c.nome}</td>
 	        <td>${c.cpf}</td>
 	        <td>${c.email}</td>
+	        <td>${c.usuario.email}</td>
 	       <td><a href="/cliente/${c.id}/excluir">excluir</a></td>
 	      </tr>
 	      </c:forEach>

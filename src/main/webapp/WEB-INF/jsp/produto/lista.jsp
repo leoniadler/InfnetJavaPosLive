@@ -14,19 +14,23 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 		<div class="container">
 	  <h2>AppCompra</h2>
-	  <p>Gestão de Cadastro de Compras</p>
 	  
-	  <h3>Classe: Produto</h3>            
+	  <c:if test="${not empty mensagem }">	  
+			<div class="alert ${tipo}">
+	  			<strong>Informação</strong> ${mensagem} 
+			</div>
+	  	</c:if>
+	  
+	  <p>Gestão de Cadastro de Produtos</p>
+	  
+	  <h3>Listagem de Produto</h3>            
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	      <th>ID</th>
+	      	<th>ID</th>
 	      	<th>Nome</th>
 	      	<th>Valor</th>
 	      	<th>Código</th>
-	        <th>Nome</th>
-	        <th>Preço</th>
-	        <th>Código</th>
 	        <th> </th>
 	      </tr>
 	    </thead>
@@ -34,23 +38,15 @@
 	      <!-- for(tipo da colecao Objeto : nome da colecao) -->
 	    <c:forEach var= "c" items="${listagem}">
 	      <tr>
-	      <td>${c.id}</td>
+	      	<td>${c.id}</td>
 	        <td>${c.nome}</td>
 	        <td>${c.valor}</td>
-	        <td>${c.codigo}</td>
-	        <td>${c.nome}</td>
-	        <td>${c.preco}</td>
 	        <td>${c.codigo}</td>
 	        <td><a href="/produto/${c.id}/excluir">excluir</a></td>
 	      </tr>
 	      </c:forEach>
 	    </tbody>
 	  </table>
-	  
-	  
-	  
-	 
-	    
 	</div>
 </body>
 </html>

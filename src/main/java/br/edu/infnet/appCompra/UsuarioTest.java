@@ -4,18 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.service.UsuarioService;
 
 @Component
+@Order(1)
 public class UsuarioTest implements ApplicationRunner{
 	
-//	@Autowired
-//	private UsuarioService usuarioService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	private Usuario usuario;
 
@@ -32,7 +36,9 @@ public class UsuarioTest implements ApplicationRunner{
 //		UsuarioService usuarioService = new UsuarioService();
 //		usuarioService.incluir(usuario);
 		
-		new UsuarioService().incluir(usuario);
+//		new UsuarioService().incluir(usuario);
+		usuarioService.incluir(usuario);
+		
 		
 		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
 		String arq = "usuario.txt";
@@ -54,7 +60,8 @@ public class UsuarioTest implements ApplicationRunner{
 					usuario.setNome(campos[1]);
 					usuario.setSenha(campos[2]);
 					
-					new UsuarioService().incluir(usuario);
+//					new UsuarioService().incluir(usuario);
+					usuarioService.incluir(usuario);
 					
 					linha = leitura.readLine();
 				}

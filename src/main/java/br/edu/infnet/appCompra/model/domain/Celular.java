@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoException;
 
-//@Entity
-//@Table(name = "TCelular")
+@Entity
+@Table(name = "TCelular")
 public class Celular extends Produto{
 	
 //	@Id

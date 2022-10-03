@@ -8,8 +8,8 @@ import javax.persistence.Table;
 
 import br.edu.infnet.appCompra.model.domain.exceptions.TamanhoTelevisaoInvalidoException;
 
-//@Entity
-//@Table(name = "TTelevisao")
+@Entity
+@Table(name = "TTelevisao")
 public class Televisao extends Produto{
 	
 //	@Id

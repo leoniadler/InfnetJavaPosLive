@@ -14,12 +14,13 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appCompra.model.domain.Celular;
 import br.edu.infnet.appCompra.model.domain.Televisao;
+import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.domain.exceptions.TamanhoTelevisaoInvalidoException;
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoException;
 import br.edu.infnet.appCompra.model.service.TelevisaoService;
 
 @Component
-@Order(6)
+@Order(5)
 public class TelevisaoTest implements ApplicationRunner{
 
 	@Autowired
@@ -30,6 +31,9 @@ public class TelevisaoTest implements ApplicationRunner{
 		System.out.println();
 		System.out.println("#televisao");
 		System.out.println();
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
 		
 		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
 		String arq = "produtos.txt";
@@ -58,6 +62,7 @@ public class TelevisaoTest implements ApplicationRunner{
 							televisao1.setTamanho(Double.valueOf(campos[5]));
 							televisao1.setValor(Double.valueOf(campos[6]));
 							televisao1.setDefinicao(Boolean.valueOf(campos[7]));
+							televisao1.setUsuario(usuario);
 							System.out.println("Calculo de Venda: " + televisao1.calcularVenda());
 							televisaoService.incluir(televisao1);
 //							new TelevisaoService().incluir(televisao1);

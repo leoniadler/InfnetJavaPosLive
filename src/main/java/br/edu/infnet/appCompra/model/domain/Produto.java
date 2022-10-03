@@ -1,6 +1,19 @@
 package br.edu.infnet.appCompra.model.domain;
 
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 //import java.util.Objects;
 
 import br.edu.infnet.appCompra.interfaces.IPrinter;
@@ -9,34 +22,27 @@ import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoExcep
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorNotebookInvalidoException;
 
 
+@Entity
+@Table(name = "TProduto")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Produto implements IPrinter{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome; 
 	private Double preco;
 	private Integer codigo;
 	
-	private Produto produto;
-
+	@ManyToMany(mappedBy = "produtoLista")
+	private List<Compra> compras;
 	
-//	public abstract void impressao();
-	
-	// int float string data
-//	public Double calcularVenda() {
-////		System.out.println("Calcular venda - Mae");
-//		return preco * 2;
-//	}
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 	
 	public abstract Double calcularVenda() throws TamanhoTelevisaoInvalidoException, ValorCelularInvalidoException, ValorNotebookInvalidoException;
 
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 
 	@Override
 	public void impressao() {
@@ -105,6 +111,22 @@ public abstract class Produto implements IPrinter{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
 	}
 
 	

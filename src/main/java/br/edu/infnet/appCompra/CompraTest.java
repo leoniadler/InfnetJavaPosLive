@@ -26,6 +26,7 @@ import br.edu.infnet.appCompra.model.domain.Compra;
 import br.edu.infnet.appCompra.model.domain.Notebook;
 import br.edu.infnet.appCompra.model.domain.Produto;
 import br.edu.infnet.appCompra.model.domain.Televisao;
+import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.domain.exceptions.ClienteNuloException;
 import br.edu.infnet.appCompra.model.domain.exceptions.CompraSemProdutoException;
 import br.edu.infnet.appCompra.model.domain.exceptions.CpfInvalidoException;
@@ -34,7 +35,7 @@ import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoExcep
 import br.edu.infnet.appCompra.model.service.CompraService;
 
 @Component
-@Order(1)
+@Order(6)
 public class CompraTest implements ApplicationRunner{
 	
 	@Autowired
@@ -45,6 +46,43 @@ public class CompraTest implements ApplicationRunner{
 		System.out.println();
 		System.out.println("#compra");
 		System.out.println();
+		
+		try {
+			
+			Usuario usuario = new Usuario();
+			usuario.setId(1);
+			
+			Cliente cliente = new Cliente();
+			cliente.setId(1);
+			
+			Set<Produto> produtos = new HashSet<Produto>();
+			Celular celular1 = new Celular();
+			celular1.setId(1);
+			celular1.setCodigo(123);
+			Celular celular2 = new Celular();
+			celular2.setId(2);
+			celular2.setCodigo(234);
+			Celular celular3 = new Celular();
+			celular3.setId(3);
+			celular3.setCodigo(345);
+			
+			produtos.add(celular1);
+			produtos.add(celular2);
+			produtos.add(celular3);
+			
+			
+			Compra compra = new Compra(cliente, produtos);
+			compra.setDescricao("Primeiro Pedido");
+			compra.setWeb(true);
+			compra.setUsuario(usuario);
+			
+			compraService.incluir(compra);
+		} catch (ClienteNuloException | CompraSemProdutoException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 //		Celular celular1 = new Celular();
 //		
@@ -94,124 +132,124 @@ public class CompraTest implements ApplicationRunner{
 		//----------------------------------------
 		
 		
-		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
-		String arq = "compras.txt";
-		
-		try{
-			try {
-				FileReader fileReader = new FileReader(dir+arq);
-				
-				BufferedReader leitura = new BufferedReader(fileReader);
-				
-				Set<Produto> produtos = null;
-				List<Compra> compras = new ArrayList<Compra>();
-				
-				String linha = leitura.readLine();
-				while(linha != null) {
-					
-					String[] campos = linha.split(";");
-					
-					switch (campos[0].toUpperCase()) {
-					case "P":
-						
-						try {
-							
-//							compras = new HashSet<Produto>();
-							
-							Cliente cliente1 = new Cliente(campos[3], campos[4], campos[5]);
-							
-							Compra compra1 = new Compra(cliente1, produtos);
-							compra1.setDescricao(campos[1]);
-							compra1.setWeb(Boolean.valueOf(campos[2]));
-//							CompraController.incluir(compra1);
-							
-							compras.add(compra1);
-						} catch (CpfInvalidoException | ClienteNuloException | CompraSemProdutoException e) {
-							System.out.println("[ERROR] - COMPRA: " + e.getMessage());
-						} 
-						
-						break;
-					case "B":
-						try {
-							Celular celular1 = new Celular();
-							
-							celular1.setCodigo(Integer.valueOf(campos[1])); 
-							celular1.setNome(campos[2]);
-							celular1.setPreco(Double.valueOf(campos[3]));
-								
-							celular1.setMarca(campos[4]);
-							celular1.setModelo(campos[5]);
-							celular1.setValor(Double.valueOf(campos[6]));
-							celular1.setCarregador(Boolean.valueOf(campos[7]));
-							System.out.println("Calculo de Venda: " + celular1.calcularVenda());
-//							celularService.incluir(celular1);
-//							new CelularService().incluir(celular1);
-							produtos.add(celular1);
-						} catch (ValorCelularInvalidoException e) {
-							System.out.println("[ERROR - CELULAR]" + e.getMessage());
-						}
-						
-						
-						
-						break;	
-					case "C":
-						try {
-						Televisao televisao1 = new Televisao();
-						
-						televisao1.setCodigo(Integer.valueOf(campos[1]));
-						televisao1.setNome(campos[2]);
-						televisao1.setPreco(Double.valueOf(campos[3]));
-						
-						televisao1.setMarca(campos[4]);
-						televisao1.setTamanho(Double.valueOf(campos[5]));
-						televisao1.setValor(Double.valueOf(campos[6]));
-						televisao1.setDefinicao(Boolean.valueOf(campos[7]));
-						System.out.println("Calculo de Venda: " + televisao1.calcularVenda());
-//						televisaoService.incluir(televisao1);
-//						new TelevisaoService().incluir(televisao1);
-						produtos.add(televisao1);
-					} catch (TamanhoTelevisaoInvalidoException e) {
-						System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
-					}
-						
-						
-						break;
-					case "D":
-//						produtos.add(notebook1);
-						break;
-
-					default:
-						break;
-					}
-					
-					
-					linha = leitura.readLine();
-				}
-				
-				//
-				for(Compra c : compras) {
-					System.out.println(">>>>>>>>>>>>>>> " + c.getId());
-					System.out.println(">>>>>>>>>>>>> " + c.getCliente().getNome());
-					System.out.println(">>>>>>>>>>> " + c.getProdutoLista().size());
-					CompraController compraController = new CompraController();
-					//					new CompraService().incluir(c);
-					compraService.incluir(c);
-				}
-				
-				leitura.close();
-				
-				fileReader.close();
-			} catch (FileNotFoundException e) {
-				System.out.println("[ERRO] O Arquivo não existe!!");
-			} catch (IOException e) {
-				System.out.println("[ERRO] Problema no fechamento do arquivo!!");
-
-			}	
-		}finally {
-			System.out.println("Terminou!!");
-		}
-		
-		System.out.println(dir+arq);
+//		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
+//		String arq = "compras.txt";
+//		
+//		try{
+//			try {
+//				FileReader fileReader = new FileReader(dir+arq);
+//				
+//				BufferedReader leitura = new BufferedReader(fileReader);
+//				
+//				Set<Produto> produtos = null;
+//				List<Compra> compras = new ArrayList<Compra>();
+//				
+//				String linha = leitura.readLine();
+//				while(linha != null) {
+//					
+//					String[] campos = linha.split(";");
+//					
+//					switch (campos[0].toUpperCase()) {
+//					case "P":
+//						
+//						try {
+//							
+////							compras = new HashSet<Produto>();
+//							
+//							Cliente cliente1 = new Cliente(campos[3], campos[4], campos[5]);
+//							
+//							Compra compra1 = new Compra(cliente1, produtos);
+//							compra1.setDescricao(campos[1]);
+//							compra1.setWeb(Boolean.valueOf(campos[2]));
+////							CompraController.incluir(compra1);
+//							
+//							compras.add(compra1);
+//						} catch (CpfInvalidoException | ClienteNuloException | CompraSemProdutoException e) {
+//							System.out.println("[ERROR] - COMPRA: " + e.getMessage());
+//						} 
+//						
+//						break;
+//					case "B":
+//						try {
+//							Celular celular1 = new Celular();
+//							
+//							celular1.setCodigo(Integer.valueOf(campos[1])); 
+//							celular1.setNome(campos[2]);
+//							celular1.setPreco(Double.valueOf(campos[3]));
+//								
+//							celular1.setMarca(campos[4]);
+//							celular1.setModelo(campos[5]);
+//							celular1.setValor(Double.valueOf(campos[6]));
+//							celular1.setCarregador(Boolean.valueOf(campos[7]));
+//							System.out.println("Calculo de Venda: " + celular1.calcularVenda());
+////							celularService.incluir(celular1);
+////							new CelularService().incluir(celular1);
+//							produtos.add(celular1);
+//						} catch (ValorCelularInvalidoException e) {
+//							System.out.println("[ERROR - CELULAR]" + e.getMessage());
+//						}
+//						
+//						
+//						
+//						break;	
+//					case "C":
+//						try {
+//						Televisao televisao1 = new Televisao();
+//						
+//						televisao1.setCodigo(Integer.valueOf(campos[1]));
+//						televisao1.setNome(campos[2]);
+//						televisao1.setPreco(Double.valueOf(campos[3]));
+//						
+//						televisao1.setMarca(campos[4]);
+//						televisao1.setTamanho(Double.valueOf(campos[5]));
+//						televisao1.setValor(Double.valueOf(campos[6]));
+//						televisao1.setDefinicao(Boolean.valueOf(campos[7]));
+//						System.out.println("Calculo de Venda: " + televisao1.calcularVenda());
+////						televisaoService.incluir(televisao1);
+////						new TelevisaoService().incluir(televisao1);
+//						produtos.add(televisao1);
+//					} catch (TamanhoTelevisaoInvalidoException e) {
+//						System.out.println("[ERROR - TELEVISÃO]" + e.getMessage());
+//					}
+//						
+//						
+//						break;
+//					case "D":
+////						produtos.add(notebook1);
+//						break;
+//
+//					default:
+//						break;
+//					}
+//					
+//					
+//					linha = leitura.readLine();
+//				}
+//				
+//				//
+//				for(Compra c : compras) {
+//					System.out.println(">>>>>>>>>>>>>>> " + c.getId());
+//					System.out.println(">>>>>>>>>>>>> " + c.getCliente().getNome());
+//					System.out.println(">>>>>>>>>>> " + c.getProdutoLista().size());
+//					CompraController compraController = new CompraController();
+//					//					new CompraService().incluir(c);
+//					compraService.incluir(c);
+//				}
+//				
+//				leitura.close();
+//				
+//				fileReader.close();
+//			} catch (FileNotFoundException e) {
+//				System.out.println("[ERRO] O Arquivo não existe!!");
+//			} catch (IOException e) {
+//				System.out.println("[ERRO] Problema no fechamento do arquivo!!");
+//
+//			}	
+//		}finally {
+//			System.out.println("Terminou!!");
+//		}
+//		
+//		System.out.println(dir+arq);
 	
 		
 		

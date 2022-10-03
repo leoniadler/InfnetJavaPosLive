@@ -22,8 +22,8 @@ import br.edu.infnet.appCompra.model.test.AppImpressao;
 public class AppController {
 	
 	
-//	@Autowired
-//	private UsuarioService usuarioService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Autowired(required = false)
 	private AppService appService;
@@ -63,7 +63,8 @@ private Projeto projeto;
 //		UsuarioService usuarioService = new UsuarioService();
 //		Usuario usuario = usuarioService.validar(email, senha);
 		
-		Usuario usuario = new UsuarioService().validar(email, senha);
+//		Usuario usuario = new UsuarioService().validar(email, senha);
+		Usuario usuario = usuarioService.validar(email, senha);
 		
 		if(usuario != null) {
 			

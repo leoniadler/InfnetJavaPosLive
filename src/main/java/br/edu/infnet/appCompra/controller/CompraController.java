@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appCompra.model.domain.Compra;
+import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.service.ClienteService;
 import br.edu.infnet.appCompra.model.service.CompraService;
 import br.edu.infnet.appCompra.model.service.ProdutoService;
@@ -28,19 +30,19 @@ public class CompraController {
 	
 	//rota
 	@GetMapping(value = "/compra")
-	public String telaCadastro(Model model) {
+	public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("cliente", clienteService.obterLista());
-		model.addAttribute("produtos", produtoService.obterLista());
+		model.addAttribute("cliente", clienteService.obterLista(usuario));
+		model.addAttribute("produtos", produtoService.obterLista(usuario));
 		
 		//tela
 		return "compra/cadastro";
 	}
 	
 	@GetMapping(value = "/compra/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("listagem", compraService.obterLista());
+		model.addAttribute("listagem", compraService.obterLista(usuario));
 		
 		//tela
 		return "compra/lista";
@@ -55,7 +57,11 @@ public class CompraController {
 	}
 	
 	@PostMapping(value = "/compra/incluir")
-	public String incluir() {
+	public String incluir(Compra compra, @SessionAttribute("user") Usuario usuario) {
+		
+		compra.setUsuario(usuario);
+		
+		compraService.incluir(compra);
 		
 //		compraService.incluir(compra);
 		

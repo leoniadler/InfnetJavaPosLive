@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appCompra.model.domain.Celular;
 import br.edu.infnet.appCompra.model.domain.Cliente;
+import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.domain.exceptions.CpfInvalidoException;
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoException;
 import br.edu.infnet.appCompra.model.service.CelularService;
 
 @Component
-@Order(4)
+@Order(3)
 public class CelularTest implements ApplicationRunner {
 	
 	@Autowired
@@ -30,6 +31,9 @@ public class CelularTest implements ApplicationRunner {
 		System.out.println();
 		System.out.println("#celular");
 		System.out.println();
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
 		
 		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
 		String arq = "produtos.txt";
@@ -58,6 +62,7 @@ public class CelularTest implements ApplicationRunner {
 							celular1.setModelo(campos[5]);
 							celular1.setValor(Double.valueOf(campos[6]));
 							celular1.setCarregador(Boolean.valueOf(campos[7]));
+							celular1.setUsuario(usuario);
 //							System.out.println();
 							System.out.println("Calculo de Venda: " + celular1.calcularVenda());
 							celularService.incluir(celular1);

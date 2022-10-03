@@ -10,46 +10,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appCompra.model.domain.Produto;
+import br.edu.infnet.appCompra.model.domain.Usuario;
+import br.edu.infnet.appCompra.model.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
 	
 	@Autowired
-	private CelularService celularService;
-	@Autowired
-	private NotebookService notebookService;
-	@Autowired
-	private TelevisaoService televisaoService;
+	private ProdutoRepository produtoRepository;
+//	@Autowired
+//	private CelularService celularService;
+//	@Autowired
+//	private NotebookService notebookService;
+//	@Autowired
+//	private TelevisaoService televisaoService;
+	
+//	public List<Produto> obterLista(){
+//		
+//		List<Produto> produtos = new ArrayList<Produto>();
+//		
+//		produtos.addAll(celularService.obterLista());
+//		produtos.addAll(televisaoService.obterLista());
+//		produtos.addAll(notebookService.obterLista());
+//
+//		
+//		return produtos;
+//	}
 	
 	public List<Produto> obterLista(){
 		
-		List<Produto> produtos = new ArrayList<Produto>();
-		
-		produtos.addAll(celularService.obterLista());
-		produtos.addAll(televisaoService.obterLista());
-		produtos.addAll(notebookService.obterLista());
-
-		
-		return produtos;
+		return (List<Produto>) produtoRepository.findAll();
 	}
 	
-	
-	private static Map<Integer, Produto> mapaProduto = new HashMap<Integer, Produto>();
-//
-	private static Integer id = 1;
+	public List<Produto> obterLista(Usuario usuario){
+
 		
-		public  void incluir(Produto produto) {
+		return (List<Produto>) produtoRepository.findAll(usuario.getId());
+	}
+		
+	public  void excluir(Integer id){
 			
-			produto.setId(id++);
-			
-			mapaProduto.put(produto.getId(), produto);
-		}
-		
-//		public  Collection<Produto> obterLista(){
-//			return mapaProduto.values();
-//		}
-		
-		public  void excluir(Integer id){
-			mapaProduto.remove(id);
-		}
+		produtoRepository.deleteById(id);
+	}
 }

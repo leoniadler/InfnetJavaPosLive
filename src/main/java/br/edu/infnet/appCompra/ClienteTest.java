@@ -19,7 +19,7 @@ import br.edu.infnet.appCompra.model.service.UsuarioService;
 
 
 @Component
-@Order(3)
+@Order(2)
 public class ClienteTest implements ApplicationRunner{
 	
 	@Autowired
@@ -31,6 +31,10 @@ public class ClienteTest implements ApplicationRunner{
 		System.out.println();
 		System.out.println("#cliente");
 		System.out.println();
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		
 		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
 		String arq = "clientes.txt";
@@ -49,6 +53,7 @@ public class ClienteTest implements ApplicationRunner{
 					
 					try {
 						Cliente cliente1 = new Cliente(campos[0], campos[1], campos[2]);
+						cliente1.setUsuario(usuario);
 						clienteService.incluir(cliente1);
 //						new ClienteService().incluir(cliente1);
 					} catch (CpfInvalidoException e) {

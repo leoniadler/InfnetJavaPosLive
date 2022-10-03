@@ -4,31 +4,51 @@ import java.time.LocalDateTime;
 //import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.infnet.appCompra.interfaces.IPrinter;
 import br.edu.infnet.appCompra.model.domain.exceptions.ClienteNuloException;
 import br.edu.infnet.appCompra.model.domain.exceptions.CompraSemProdutoException;
 
-//@Entity
-//@Table(name = "TCompra")
+@Entity
+@Table(name = "TCompra")
 public class Compra implements IPrinter {
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;  // get recuperar - set preencher
 	private LocalDateTime data;
 	private boolean web;
+	
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
+	
+	@ManyToMany(cascade = CascadeType.DETACH)
 	private Set<Produto> produtoLista;
 	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	
+	// Construtor
+	public Compra() {
+		this.data = LocalDateTime.now();
+		this.web = true;
+	}
+	
 	public Compra(Cliente cliente, Set<Produto> produtoLista) throws ClienteNuloException, CompraSemProdutoException {
-		
+		this();
 		// Cliente
 		if(cliente == null) {
 			throw new ClienteNuloException("Impossivel efetuar uma compra sem um cliente!");
@@ -44,7 +64,7 @@ public class Compra implements IPrinter {
 			throw new CompraSemProdutoException("Impossivel efetuar um pedido sem produtos!");
 		}
 		
-		this.data = LocalDateTime.now();
+		
 		this.cliente = cliente;
 		this.produtoLista = produtoLista;
 	}
@@ -118,6 +138,19 @@ public class Compra implements IPrinter {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+//	public String getNome() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	
 	

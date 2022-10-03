@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appCompra.model.domain.Celular;
 import br.edu.infnet.appCompra.model.domain.Notebook;
+import br.edu.infnet.appCompra.model.domain.Usuario;
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorCelularInvalidoException;
 import br.edu.infnet.appCompra.model.domain.exceptions.ValorNotebookInvalidoException;
 import br.edu.infnet.appCompra.model.service.NotebookService;
 
 @Component
-@Order(5)
+@Order(4)
 public class NotebookTest implements ApplicationRunner{
 
 	@Autowired
@@ -29,6 +30,9 @@ public class NotebookTest implements ApplicationRunner{
 		System.out.println();
 		System.out.println("#notebook");
 		System.out.println();
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
 		
 		String dir = "/Users/leoniadler/ProjTxtInfnet/dois/";
 		String arq = "produtos.txt";
@@ -58,6 +62,7 @@ public class NotebookTest implements ApplicationRunner{
 							notebook1.setValor(Double.valueOf(campos[6]));
 							notebook1.setPlacaDeVideo(Boolean.valueOf(campos[7]));
 							System.out.println("Calculo de Venda: " + notebook1.calcularVenda());
+							notebook1.setUsuario(usuario);
 							notebookService.incluir(notebook1);
 //							new NotebookService().incluir(notebook1);
 						} catch (ValorNotebookInvalidoException e) {
